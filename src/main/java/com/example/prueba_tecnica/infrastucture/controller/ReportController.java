@@ -1,4 +1,4 @@
-package com.example.prueba_tecnica.controller;
+package com.example.prueba_tecnica.infrastucture.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.prueba_tecnica.services.ReportService;
+import com.example.prueba_tecnica.applications.services.ReportService;
 
 import io.swagger.v3.oas.annotations.Operation;
 
@@ -28,7 +28,7 @@ public class ReportController {
        tags = {"Reportes"},
        description = "Descargar el reporte de solicitudes")
     public ResponseEntity<byte[]> downloadReport() throws IOException {
-        String pathFile = reportService.generarReporteExcel("");
+        String pathFile = reportService.generarReporteExcel();
         File file = new File(pathFile);
         byte[] content = Files.readAllBytes(file.toPath());
         HttpHeaders headers = new HttpHeaders();
