@@ -4,6 +4,7 @@ package com.example.prueba_tecnica.utils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Base64;
 
 public class FileValidator {
@@ -29,8 +30,7 @@ public class FileValidator {
     }
 
     public static String convertToBase64(MultipartFile file) throws IOException {
-       Base64.Encoder encoder = Base64.getEncoder();
-       //String baseString = encoder.encodeToString(file.getBytes());
-        return "";
+        String base64String = Base64.getEncoder().encodeToString(file.getBytes());
+        return base64String;
     }
 }

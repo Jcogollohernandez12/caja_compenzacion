@@ -34,7 +34,7 @@ public class SolicitudeController {
     @Autowired
     private SolicitudeServiceImpl solicitudeService;
     
-    @PostMapping(value = "/create/{name}/{indentificador}/{email}/{phone}/{reason}/{value}/{status}/{dependency}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/create/{name}/{indentificador}/{email}/{phone}/{reason}/{value}/{dependency}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(
         summary = "Crear una solicitud",
         responses = {
@@ -50,12 +50,11 @@ public class SolicitudeController {
         @PathVariable String phone,
         @PathVariable String reason,
         @PathVariable Double value,
-        @PathVariable String status,
         @PathVariable Integer dependency,
         @RequestPart(value = "file", required = true) @Schema(type = "string", format = "binary", description = "Archivo PDF para la solicitud") MultipartFile file
     ) throws IOException {
 
-        SolicitudeRequest request = new SolicitudeRequest(name, indentificador, email, phone, reason, value, status, dependency);
+        SolicitudeRequest request = new SolicitudeRequest(name, indentificador, email, phone, reason, value, "", dependency);
         FileValidator.validarPDF(file);
         String pathFile = FileValidator.saveFile(file, "");
         return solicitudeService.saveSolicitude(request, pathFile);
