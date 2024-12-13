@@ -1,9 +1,10 @@
 package com.example.prueba_tecnica.infrastucture.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -88,8 +89,8 @@ public class SolicitudeController {
     }
 
     @GetMapping("getAllSolicitude")
-    public List<SolicitudeResponse> getAllSolicitude() {
-        return solicitudeService.getAllSolicitude();
+    public Page<SolicitudeResponse> getAllSolicitude(Pageable pageable) {
+        return solicitudeService.getAllSolicitude(pageable);
     }
     
 }

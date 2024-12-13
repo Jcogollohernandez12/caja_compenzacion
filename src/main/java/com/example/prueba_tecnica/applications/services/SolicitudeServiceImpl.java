@@ -1,6 +1,9 @@
 package com.example.prueba_tecnica.applications.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.prueba_tecnica.domain.dto.ProcessResponse;
@@ -49,10 +52,11 @@ public class SolicitudeServiceImpl implements SolicitudeService {
         return new ProcessResponse("Solicitud " + solicitud.getId() + " eliminada", true, 200);
     }
     @Override
-   public List<SolicitudeResponse> getAllSolicitude() {
-        return solicitudeRepository.findAll().stream()
-                .map(solicitudeMapper::toResponse)
-                .collect(Collectors.toList());
-    }
+   public Page<SolicitudeResponse> getAllSolicitude(Pageable pageable) {
+    List<SolicitudeResponse> responses = solicitudeRepository.findAll(pageable).stream()
+            .map(solicitudeMapper::toResponse)
+            .collect(Collectors.toList());
+    return new PageImpl<>(responses);
+}
 
 }

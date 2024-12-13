@@ -2,6 +2,7 @@ package com.example.prueba_tecnica.applications.services;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.prueba_tecnica.domain.entity.Solicitude;
@@ -18,7 +19,7 @@ public class ReportService {
     }
 
     public String generateReportExcel() throws IOException {
-        List<Solicitude> solicitude = solicitudeRepository.findAll();
+        List<Solicitude> solicitude = solicitudeRepository.findAll(Pageable.unpaged()).getContent();
         return ExcelGenerator.generarReporteExcel(solicitude);
     }
 }
