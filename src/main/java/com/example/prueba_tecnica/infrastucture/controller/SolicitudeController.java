@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.prueba_tecnica.applications.services.SolicitudService;
+import com.example.prueba_tecnica.applications.services.SolicitudeServiceImpl;
 import com.example.prueba_tecnica.domain.dto.ProcessResponse;
 import com.example.prueba_tecnica.domain.dto.SolicitudeRequest;
 import com.example.prueba_tecnica.domain.dto.SolicitudeResponse;
@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class SolicitudeController {
 
     @Autowired
-    private SolicitudService solicitudService;
+    private SolicitudeServiceImpl solicitudeService;
     
     @PostMapping(value = "/create/{name}/{indentificador}/{email}/{phone}/{reason}/{value}/{status}/{dependency}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(
@@ -58,7 +58,7 @@ public class SolicitudeController {
         SolicitudeRequest request = new SolicitudeRequest(name, indentificador, email, phone, reason, value, status, dependency);
         FileValidator.validarPDF(file);
         String pathFile = FileValidator.saveFile(file, "");
-        return solicitudService.saveSolicitude(request, pathFile);
+        return solicitudeService.saveSolicitude(request, pathFile);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -71,7 +71,7 @@ public class SolicitudeController {
     }
 )
     public ProcessResponse  deleteSolicitud(@PathVariable Long id) {
-        return solicitudService.deleteSolicitud(id);
+        return solicitudeService.deleteSolicitude(id);
     }
 
     @PutMapping("update/{id}/{entity}")
@@ -83,14 +83,14 @@ public class SolicitudeController {
             @ApiResponse(responseCode = "500", description = "Error interno del servidor")
         }
     )
-    public ProcessResponse  updateSolicitud(@PathVariable String id, @PathVariable String entity) {
-        return solicitudService.updateSolicitud(Long.parseLong(id), entity);
+    public ProcessResponse  updateSolicitude(@PathVariable String id, @PathVariable String entity) {
+        return solicitudeService.updateSolicitude(Long.parseLong(id), entity);
     
     }
 
-    @GetMapping("getAllSolicitud")
-    public List<SolicitudeResponse> getAllSolicitud() {
-        return solicitudService.getAllSolicitud();
+    @GetMapping("getAllSolicitude")
+    public List<SolicitudeResponse> getAllSolicitude() {
+        return solicitudeService.getAllSolicitude();
     }
     
 }

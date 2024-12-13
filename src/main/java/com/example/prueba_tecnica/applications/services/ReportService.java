@@ -11,14 +11,14 @@ import com.example.prueba_tecnica.infrastucture.excel.ExcelGenerator;
 @Service
 public class ReportService {
 
-    private final SolicitudeRepository solicitudRepository;
+    private final SolicitudeRepository solicitudeRepository;
 
     public ReportService(SolicitudeRepository solicitudRepository) {
-        this.solicitudRepository = solicitudRepository;
+        this.solicitudeRepository = solicitudRepository;
     }
 
-    public String generarReporteExcel() throws IOException {
-        List<Solicitude> solicitudes = solicitudRepository.findAll();
-        return ExcelGenerator.generarReporteExcel(solicitudes);
+    public String generateReportExcel() throws IOException {
+        List<Solicitude> solicitude = solicitudeRepository.findAll();
+        return ExcelGenerator.generarReporteExcel(solicitude);
     }
 }

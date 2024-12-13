@@ -28,7 +28,7 @@ public class ReportController {
        tags = {"Reportes"},
        description = "Descargar el reporte de solicitudes")
     public ResponseEntity<byte[]> downloadReport() throws IOException {
-        String pathFile = reportService.generarReporteExcel();
+        String pathFile = reportService.generateReportExcel();
         File file = new File(pathFile);
         byte[] content = Files.readAllBytes(file.toPath());
         HttpHeaders headers = new HttpHeaders();
