@@ -1,4 +1,4 @@
-package com.example.prueba_tecnica.dto;
+package com.example.prueba_tecnica.domain.dto;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.example.prueba_tecnica.controller;
+package com.example.prueba_tecnica.infrastucture.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.prueba_tecnica.dto.ProcessResponse;
-import com.example.prueba_tecnica.dto.SolicitudRequest;
-import com.example.prueba_tecnica.dto.SolicitudResponse;
-import com.example.prueba_tecnica.services.SolicitudService;
+import com.example.prueba_tecnica.applications.services.SolicitudService;
+import com.example.prueba_tecnica.domain.dto.ProcessResponse;
+import com.example.prueba_tecnica.domain.dto.SolicitudeRequest;
+import com.example.prueba_tecnica.domain.dto.SolicitudResponse;
 import com.example.prueba_tecnica.utils.FileValidator;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -55,7 +55,7 @@ public class SolicitudController {
         @RequestPart(value = "file", required = true) @Schema(type = "string", format = "binary", description = "Archivo PDF para la solicitud") MultipartFile file
     ) throws IOException {
 
-        SolicitudRequest request = new SolicitudRequest(name, indentificador, email, phone, reason, value, status, dependency);
+        SolicitudeRequest request = new SolicitudeRequest(name, indentificador, email, phone, reason, value, status, dependency);
         FileValidator.validarPDF(file);
         String pathFile = FileValidator.saveFile(file, "");
         return solicitudService.registrarSolicitud(request, pathFile);

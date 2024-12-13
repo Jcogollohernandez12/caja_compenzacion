@@ -1,4 +1,4 @@
-package com.example.prueba_tecnica.entity;
+package com.example.prueba_tecnica.domain.entity;
 
 
 import jakarta.persistence.*;
@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "solicitudes")
-public class Solicitud {
+public class Solicitude {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

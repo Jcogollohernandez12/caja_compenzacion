@@ -1,4 +1,4 @@
-package com.example.prueba_tecnica.dto;
+package com.example.prueba_tecnica.domain.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 
 
 
-public class SolicitudRequest {
+public class SolicitudeRequest {
 
     @NotNull(message = "El nombre completo no puede estar vacío.")
     @Size(min = 5, max = 100, message = "El nombre completo debe tener entre 5 y 100 caracteres.")
@@ -42,7 +42,7 @@ public class SolicitudRequest {
 
    
 
-    public SolicitudRequest(
+    public SolicitudeRequest(
             @NotNull(message = "El nombre completo no puede estar vacío.") @Size(min = 5, max = 100, message = "El nombre completo debe tener entre 5 y 100 caracteres.") String nombreCompleto,
             @NotNull(message = "La identificación no puede estar vacía.") @Size(min = 8, max = 15, message = "La identificación debe tener entre 8 y 15 caracteres.") String identificacion,
             @NotNull(message = "El correo electrónico no puede estar vacío.") @Email(message = "El correo electrónico no tiene un formato válido.") String correoElectronico,

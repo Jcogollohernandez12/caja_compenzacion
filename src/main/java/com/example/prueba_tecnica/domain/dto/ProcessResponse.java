@@ -1,4 +1,4 @@
-package com.example.prueba_tecnica.dto;
+package com.example.prueba_tecnica.domain.dto;
 
 import lombok.Data;
 
@@ -8,10 +8,11 @@ public class ProcessResponse {
     Boolean success;
     int codeStatus;
 
-public ProcessResponse copyWProcessResponse(String message, Boolean success, int codeStatus) {
+public ProcessResponse(String message, Boolean success, int codeStatus) {
     this.message = message;
     this.success = success;
     this.codeStatus = codeStatus;
-    return this;
 }
+
+
 }

@@ -1,4 +1,4 @@
-package com.example.prueba_tecnica.config;
+package com.example.prueba_tecnica.infrastucture.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -14,12 +14,12 @@ public class SwaggerConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("API de Prueba Técnica")
+                        .title("Registro de Solicitudes")
                         .version("1.0")
-                        .description("Documentación de la API para el proyecto de prueba técnica")
+                        .description("APi para registro de solicitudes")
                         .termsOfService("https://www.example.com/terms")
                         .contact(new Contact()
-                                .name("Equipo de Desarrollo")
+                                .name("Prueba Técnica")
                                 .email("desarrollo@example.com")
                                 .url("https://www.example.com"))
                         .license(new License()
