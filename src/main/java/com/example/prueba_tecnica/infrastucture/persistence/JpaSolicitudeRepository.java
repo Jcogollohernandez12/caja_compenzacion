@@ -6,5 +6,5 @@ import com.example.prueba_tecnica.domain.entity.Solicitude;
 import com.example.prueba_tecnica.domain.repository.SolicitudeRepository;
 
 @Repository
-public interface JpaSolicitudRepository extends JpaRepository<Solicitude, Long>, SolicitudeRepository {
+public interface JpaSolicitudeRepository extends JpaRepository<Solicitude, Long>, SolicitudeRepository {
 }

@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.prueba_tecnica.applications.services.SolicitudService;
 import com.example.prueba_tecnica.domain.dto.ProcessResponse;
 import com.example.prueba_tecnica.domain.dto.SolicitudeRequest;
-import com.example.prueba_tecnica.domain.dto.SolicitudResponse;
+import com.example.prueba_tecnica.domain.dto.SolicitudeResponse;
 import com.example.prueba_tecnica.utils.FileValidator;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/api/solicitudes")
-public class SolicitudController {
+public class SolicitudeController {
 
     @Autowired
     private SolicitudService solicitudService;
@@ -43,7 +43,7 @@ public class SolicitudController {
             @ApiResponse(responseCode = "500", description = "Error interno del servidor")
         }
     )
-    public SolicitudResponse registrarSolicitud(
+    public SolicitudeResponse registrarSolicitud(
         @PathVariable String name,
         @PathVariable String indentificador,
         @PathVariable String email,
@@ -58,7 +58,7 @@ public class SolicitudController {
         SolicitudeRequest request = new SolicitudeRequest(name, indentificador, email, phone, reason, value, status, dependency);
         FileValidator.validarPDF(file);
         String pathFile = FileValidator.saveFile(file, "");
-        return solicitudService.registrarSolicitud(request, pathFile);
+        return solicitudService.saveSolicitude(request, pathFile);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -89,7 +89,7 @@ public class SolicitudController {
     }
 
     @GetMapping("getAllSolicitud")
-    public List<SolicitudResponse> getAllSolicitud() {
+    public List<SolicitudeResponse> getAllSolicitud() {
         return solicitudService.getAllSolicitud();
     }
     

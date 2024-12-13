@@ -112,15 +112,15 @@ La API sigue la **arquitectura limpia**, con las siguientes capas:
 
 ### Persistencia
 - Implementación de acceso a datos con JPA y un repositorio H2 en memoria para pruebas.
-- El repositorio JPA (`JpaSolicitudRepository`) está encapsulado en la capa de infraestructura.
+- El repositorio JPA (`JpaSolicitudeRepository`) está encapsulado en la capa de infraestructura.
 
 ## Diagrama de Flujo
 
 ```mermaid
 graph TD
-    A[SolicitudController] -->|POST| B[SolicitudService]
-    B -->|Guarda datos| C[JpaSolicitudRepository]
-    A -->|GET| D[SolicitudService]
+    A[SolicitudeController] -->|POST| B[SolicitudeService]
+    B -->|Guarda datos| C[JpaSolicitudeRepository]
+    A -->|GET| D[SolicitudeService]
     D -->|Obtiene datos| C
     A -->|GET Report| E[ReportService]
     E -->|Genera Excel| F[ExcelGenerator]
